@@ -15,7 +15,6 @@
 		94107830239EC3E00022038E /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9410782F239EC3E00022038E /* UsersViewModel.swift */; };
 		94107832239EC53A0022038E /* UIImageView+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94107831239EC53A0022038E /* UIImageView+URL.swift */; };
 		94A5E8CD239E92C600C1050B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5E8CC239E92C600C1050B /* AppDelegate.swift */; };
-		94A5E8CF239E92C600C1050B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5E8CE239E92C600C1050B /* SceneDelegate.swift */; };
 		94A5E8D6239E92C700C1050B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A5E8D5239E92C700C1050B /* Assets.xcassets */; };
 		94A5E8D9239E92C700C1050B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A5E8D7239E92C700C1050B /* LaunchScreen.storyboard */; };
 		94A5E8E4239E92C800C1050B /* GithubSearchAPIPracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5E8E3239E92C800C1050B /* GithubSearchAPIPracticeTests.swift */; };
@@ -46,7 +45,6 @@
 		94107831239EC53A0022038E /* UIImageView+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+URL.swift"; sourceTree = "<group>"; };
 		94A5E8C9239E92C600C1050B /* GithubSearchAPIPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubSearchAPIPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A5E8CC239E92C600C1050B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		94A5E8CE239E92C600C1050B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		94A5E8D5239E92C700C1050B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94A5E8D8239E92C700C1050B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		94A5E8DA239E92C800C1050B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 				94A5E8DA239E92C800C1050B /* Info.plist */,
 				94A5E8D7239E92C700C1050B /* LaunchScreen.storyboard */,
 				94A5E8F7239E9A8A00C1050B /* Models */,
-				94A5E8CE239E92C600C1050B /* SceneDelegate.swift */,
 				94A5E8F0239E939F00C1050B /* WebAPI */,
 			);
 			path = GithubSearchAPIPractice;
@@ -285,7 +282,6 @@
 				94107820239EB0B60022038E /* DataManager.swift in Sources */,
 				94A5E8CD239E92C600C1050B /* AppDelegate.swift in Sources */,
 				94107823239EBAB80022038E /* UsersViewController.swift in Sources */,
-				94A5E8CF239E92C600C1050B /* SceneDelegate.swift in Sources */,
 				9410782D239EBF0F0022038E /* ImageAndLabelCollectionViewCell.swift in Sources */,
 				94A5E8F6239E9A8500C1050B /* UserModel.swift in Sources */,
 				94107830239EC3E00022038E /* UsersViewModel.swift in Sources */,
@@ -445,6 +441,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9LB9NKBAM6;
 				INFOPLIST_FILE = GithubSearchAPIPractice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -452,7 +449,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ryanrange.GithubSearchAPIPractice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -463,6 +460,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9LB9NKBAM6;
 				INFOPLIST_FILE = GithubSearchAPIPractice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -470,7 +468,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ryanrange.GithubSearchAPIPractice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
