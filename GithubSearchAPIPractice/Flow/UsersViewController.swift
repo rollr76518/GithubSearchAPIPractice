@@ -18,26 +18,26 @@ class UsersViewController: UIViewController {
 		}
 	}
 	
+	private let viewModel = UsersViewModel()
+
 	override func viewDidLoad() {
         super.viewDidLoad()
+		
+		viewModel.delegate = self
     }
 }
 
 extension UsersViewController: UISearchBarDelegate {
 	
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-		if searchText != "" {
-
+		if searchText.isEmpty {
+			viewModel.cleanSearch()
 		} else {
-			
+			viewModel.getUsersByName(searchText)
 		}
 	}
 	
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-		searchBar.resignFirstResponder()
-	}
-	
-	func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
 		searchBar.resignFirstResponder()
 	}
 }
@@ -45,15 +45,26 @@ extension UsersViewController: UISearchBarDelegate {
 extension UsersViewController: UICollectionViewDataSource {
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 100
+		return viewModel.users.count
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageAndLabelCollectionViewCell", for: indexPath) as? ImageAndLabelCollectionViewCell else {
 			return UICollectionViewCell()
 		}
-		cell.label.text = "\(indexPath)"
+		let user = viewModel.users[indexPath.row]
+		cell.label.text = user.login
+		cell.imageView.imageFromURL(user.avatarUrl, placeholder: nil)
 		return cell
+	}
+}
+
+extension UsersViewController: UICollectionViewDelegate {
+	
+	func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+		if indexPath.row == viewModel.users.count - 1, let term = searchBar.text {
+			viewModel.getNextPageByName(term)
+		}
 	}
 }
 
@@ -68,3 +79,21 @@ extension UsersViewController: UICollectionViewDelegateFlowLayout {
 	}
 }
 
+extension UsersViewController: UsersViewModelDelegate {
+	
+	func viewModel(_ viewModel: UsersViewModel, addUsersAt indexes: [Int]) {
+		let indexPathes = indexes.map { IndexPath(row: $0, section: 0) }
+		collectionView.insertItems(at: indexPathes)
+	}
+	
+	func viewModelReloadUsers(_ viewModel: UsersViewModel) {
+		collectionView.reloadData()
+	}
+	
+	func viewModel(_ viewModel: UsersViewModel, showAlert text: String) {
+		let alert = UIAlertController(title: "Prompt", message: text, preferredStyle: .alert)
+		let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+		alert.addAction(action)
+		present(alert, animated: true, completion: nil)
+	}
+}

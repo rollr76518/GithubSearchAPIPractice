@@ -9,7 +9,7 @@
 import Foundation
 
 // TODO: URL 跟 ID 應該要大寫
-struct User: Decodable {
+struct User: Decodable, Hashable {
 	
     let login: String
     let id: Int
