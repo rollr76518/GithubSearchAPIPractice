@@ -13,18 +13,29 @@ extension UIImageView {
 	func imageFromURL(_ url: URL, placeholder: UIImage?) {
 		self.image = placeholder
 		
-		URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-			if let _ = error {
-				//TODO: handle error
-				return
+		let request = URLRequest(url: url)
+		
+		if let cache = URLCache.shared.cachedResponse(for: request) {
+			let image = UIImage(data: cache.data)
+			DispatchQueue.main.async {
+				self.image = image
 			}
-			
-			if let data = data {
-				let image = UIImage(data: data)
-				DispatchQueue.main.async {
-					self.image = image
+		} else {
+			URLSession.shared.dataTask(with: request) { (data, response, error) in
+				if let _ = error {
+					//TODO: handle error
+					return
 				}
-			}
-		}).resume()
+				
+				if let data = data, let response = response {
+					let image = UIImage(data: data)
+					DispatchQueue.main.async {
+						self.image = image
+					}
+					let cachedData = CachedURLResponse(response: response, data: data)
+					URLCache.shared.storeCachedResponse(cachedData, for: request)
+				}
+			}.resume()
+		}
 	}
 }
