@@ -19,7 +19,7 @@ class GithubSearchAPIPracticeTests: XCTestCase {
 		expectation(description: "Testing fetch users", timeout: 15.0) { (done) in
 			let apiClient = APIClient()
 			
-			apiClient.fetchUsers("rollr") { (result) in
+			apiClient.fetchUsers("rollr", page: 2) { (result) in
 				switch result {
 				case .success(let data):
 					if let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {

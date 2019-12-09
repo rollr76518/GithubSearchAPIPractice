@@ -14,13 +14,14 @@ class APIClient {
 		print("\(#file): \(#function)")
 	}
 	
-	func fetchUsers(_ userName: String, completionHandler: @escaping (Result<Data, Error>) -> Void)  {
+	func fetchUsers(_ userName: String, page: Int? = nil, completionHandler: @escaping (Result<Data, Error>) -> Void)  {
 		var components = URLComponents()
 		components.scheme = "https"
 		components.host = "api.github.com"
 		components.path = "/search/users"
 		components.queryItems = [
-			URLQueryItem(name: "q", value: userName)
+			URLQueryItem(name: "q", value: userName),
+			URLQueryItem(name: "page", value: "\(page ?? 0)")
 		]
 		
 		guard let url = components.url else {
