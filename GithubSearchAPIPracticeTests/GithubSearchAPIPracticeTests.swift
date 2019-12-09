@@ -11,24 +11,28 @@ import XCTest
 
 class GithubSearchAPIPracticeTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    override func setUp() {}
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    override func tearDown() {}
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+	func testFetchUsers() {
+		expectation(description: "Testing fetch users", timeout: 15.0) { (done) in
+			let apiClient = APIClient()
+			
+			apiClient.fetchUsers("rollr") { (result) in
+				switch result {
+				case .success(let data):
+					if let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
+						XCTAssertNotNil(json)
+					} else {
+						XCTFail("json should be parsed.")
+					}
+				case .failure(let error):
+					XCTFail(error.localizedDescription)
+				}
+				done()
+			}
+		}
+	}
 
 }
