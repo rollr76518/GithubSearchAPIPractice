@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94107820239EB0B60022038E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9410781F239EB0B60022038E /* DataManager.swift */; };
 		94A5E8CD239E92C600C1050B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5E8CC239E92C600C1050B /* AppDelegate.swift */; };
 		94A5E8CF239E92C600C1050B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5E8CE239E92C600C1050B /* SceneDelegate.swift */; };
 		94A5E8D1239E92C600C1050B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5E8D0239E92C600C1050B /* ViewController.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9410781F239EB0B60022038E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		94A5E8C9239E92C600C1050B /* GithubSearchAPIPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubSearchAPIPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A5E8CC239E92C600C1050B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94A5E8CE239E92C600C1050B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			children = (
 				94A5E8CC239E92C600C1050B /* AppDelegate.swift */,
 				94A5E8D5239E92C700C1050B /* Assets.xcassets */,
+				9410781F239EB0B60022038E /* DataManager.swift */,
 				94A5E8DA239E92C800C1050B /* Info.plist */,
 				94A5E8D7239E92C700C1050B /* LaunchScreen.storyboard */,
 				94A5E8D2239E92C700C1050B /* Main.storyboard */,
@@ -242,6 +245,7 @@
 			files = (
 				94A5E8FC239EA23B00C1050B /* APIResponseObject.swift in Sources */,
 				94A5E8D1239E92C600C1050B /* ViewController.swift in Sources */,
+				94107820239EB0B60022038E /* DataManager.swift in Sources */,
 				94A5E8CD239E92C600C1050B /* AppDelegate.swift in Sources */,
 				94A5E8CF239E92C600C1050B /* SceneDelegate.swift in Sources */,
 				94A5E8F6239E9A8500C1050B /* UserModel.swift in Sources */,

@@ -82,4 +82,18 @@ class GithubSearchAPIPracticeTests: XCTestCase {
 		
 		XCTAssertEqual(nextPagePath, "https://api.github.com/search/users?q=ro&page=3")
 	}
+	
+	func testGetUsers() {
+		expectation(description: "Testing parse users response", timeout: 15.0) { (done) in
+			DataManager.shared.users(userName: "ro", page: 3) { (result) in
+				switch result {
+				case .success(let (users, page)):
+					XCTAssertNotNil(users)
+					XCTAssertNotNil(page)
+				case .failure(let error):
+					XCTFail(error.localizedDescription)
+				}
+			}
+		}
+	}
 }
