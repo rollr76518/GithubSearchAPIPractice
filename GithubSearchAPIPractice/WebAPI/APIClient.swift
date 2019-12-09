@@ -50,3 +50,21 @@ class APIClient {
 		session.finishTasksAndInvalidate()
 	}
 }
+
+// Helper
+extension APIClient {
+	
+	func nextPagePath(headerLinks: String) -> String? {
+		let links = headerLinks.components(separatedBy: ",")
+		
+		let dictionary = links.reduce([:], { (result, link) -> [String: String] in
+			var result = result
+			let components = link.components(separatedBy:"; ")
+			let cleanPath = components[0].trimmingCharacters(in: CharacterSet(charactersIn: " <>"))
+			result[components[1]] = cleanPath
+			return result
+		})
+		
+		return dictionary["rel=\"next\""]
+	}
+}
