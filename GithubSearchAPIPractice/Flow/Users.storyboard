@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ghE-St-uB8">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Users View Controller-->
+        <scene sceneID="5hF-K9-ikj">
+            <objects>
+                <viewController id="ghE-St-uB8" customClass="UsersViewController" customModule="GithubSearchAPIPractice" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Maj-We-N5j">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="2sI-8k-OFL">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ghE-St-uB8" id="gnq-su-v7M"/>
+                                </connections>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1kl-n6-bee">
+                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="0IL-am-61T">
+                                    <size key="itemSize" width="187" height="187"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ghE-St-uB8" id="Ybf-Ml-ixB"/>
+                                    <outlet property="delegate" destination="ghE-St-uB8" id="GgT-Pi-Y2F"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="xhR-HE-47T" firstAttribute="trailing" secondItem="1kl-n6-bee" secondAttribute="trailing" id="cn7-qM-oiG"/>
+                            <constraint firstItem="1kl-n6-bee" firstAttribute="leading" secondItem="xhR-HE-47T" secondAttribute="leading" id="cn9-ak-huO"/>
+                            <constraint firstItem="2sI-8k-OFL" firstAttribute="leading" secondItem="xhR-HE-47T" secondAttribute="leading" id="hEc-wr-KRh"/>
+                            <constraint firstItem="1kl-n6-bee" firstAttribute="top" secondItem="2sI-8k-OFL" secondAttribute="bottom" id="lWC-mZ-HZd"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="1kl-n6-bee" secondAttribute="bottom" id="ogt-US-BMz"/>
+                            <constraint firstItem="xhR-HE-47T" firstAttribute="trailing" secondItem="2sI-8k-OFL" secondAttribute="trailing" id="sqv-j0-3Xy"/>
+                            <constraint firstItem="2sI-8k-OFL" firstAttribute="top" secondItem="xhR-HE-47T" secondAttribute="top" id="voP-xy-qcA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xhR-HE-47T"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Eiq-TO-YJH"/>
+                    <connections>
+                        <outlet property="collectionView" destination="1kl-n6-bee" id="yQv-9b-1Fm"/>
+                        <outlet property="searchBar" destination="2sI-8k-OFL" id="xMQ-Eu-4pg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FEg-3u-Wm5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-838" y="157"/>
+        </scene>
+    </scenes>
+</document>
