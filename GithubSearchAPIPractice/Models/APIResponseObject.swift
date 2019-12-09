@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct APIResponseObject<item: Decodable>: Decodable {
+struct APIResponseObject<item: Codable>: Codable {
 	
 	let totalCount: Int
 	let incompleteResults: Bool
