@@ -14,14 +14,14 @@ class APIClient {
 		print("\(#file): \(#function)")
 	}
 	
-	func fetchUsers(_ userName: String, page: Int? = nil, completionHandler: @escaping (Result<Data, Error>) -> Void)  {
+	func fetchUsers(_ userName: String, page: Int? = nil, completionHandler: @escaping (Result<(Data, String?), Error>) -> Void)  {
 		var components = URLComponents()
 		components.scheme = "https"
 		components.host = "api.github.com"
 		components.path = "/search/users"
 		components.queryItems = [
 			URLQueryItem(name: "q", value: userName),
-			URLQueryItem(name: "page", value: "\(page ?? 0)")
+			URLQueryItem(name: "page", value: "\(page ?? 1)") //Default 是 1
 		]
 		
 		guard let url = components.url else {
@@ -39,7 +39,12 @@ class APIClient {
 			if let error = error {
 				completionHandler(.failure(error))
 			} else if let data = data {
-				completionHandler(.success(data))
+				if let httpURLResponse = response as? HTTPURLResponse, let links = httpURLResponse.value(forHTTPHeaderField: "link") {
+					let nextPagePath = self.nextPagePath(headerLinks: links)
+					completionHandler(.success((data, nextPagePath)))
+				} else {
+					completionHandler(.success((data, nil)))
+				}
 			} else {
 				// TODO: 如果到這個情況要噴錯，理論上不會過來
 			}

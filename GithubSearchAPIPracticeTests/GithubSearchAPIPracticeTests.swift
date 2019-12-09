@@ -19,14 +19,15 @@ class GithubSearchAPIPracticeTests: XCTestCase {
 		expectation(description: "Testing fetch users", timeout: 15.0) { (done) in
 			let apiClient = APIClient()
 			
-			apiClient.fetchUsers("rollr", page: 2) { (result) in
+			apiClient.fetchUsers("ro", page: 2) { (result) in
 				switch result {
-				case .success(let data):
+				case .success(let (data, nextPagePath)):
 					if let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
 						XCTAssertNotNil(json)
 					} else {
 						XCTFail("json should be parsed.")
 					}
+					XCTAssertNotNil(nextPagePath)
 				case .failure(let error):
 					XCTFail(error.localizedDescription)
 				}
