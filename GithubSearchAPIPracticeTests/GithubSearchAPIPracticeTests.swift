@@ -19,14 +19,15 @@ class GithubSearchAPIPracticeTests: XCTestCase {
 		expectation(description: "Testing fetch users", timeout: 15.0) { (done) in
 			let apiClient = APIClient()
 			
-			apiClient.fetchUsers("rollr", page: 2) { (result) in
+			apiClient.fetchUsers("ro", page: 2) { (result) in
 				switch result {
-				case .success(let data):
+				case .success(let (data, nextPagePath)):
 					if let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
 						XCTAssertNotNil(json)
 					} else {
 						XCTFail("json should be parsed.")
 					}
+					XCTAssertNotNil(nextPagePath)
 				case .failure(let error):
 					XCTFail(error.localizedDescription)
 				}
@@ -67,5 +68,18 @@ class GithubSearchAPIPracticeTests: XCTestCase {
 			
 			done()
 		}
+	}
+	
+	func testParseHeaderLinks() {
+		let headerLinks = #"<https://api.github.com/search/users?q=ro&page=1>; rel="prev", <https://api.github.com/search/users?q=ro&page=3>; rel="next", <https://api.github.com/search/users?q=ro&page=34>; rel="last", <https://api.github.com/search/users?q=ro&page=1>; rel="first""#
+		
+		let apiClient = APIClient()
+		
+		guard let nextPagePath = apiClient.nextPagePath(headerLinks: headerLinks) else {
+			XCTFail("Parse header failed.")
+			return
+		}
+		
+		XCTAssertEqual(nextPagePath, "https://api.github.com/search/users?q=ro&page=3")
 	}
 }
