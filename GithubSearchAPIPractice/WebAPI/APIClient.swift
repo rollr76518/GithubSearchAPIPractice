@@ -39,7 +39,8 @@ class APIClient {
 			if let error = error {
 				completionHandler(.failure(error))
 			} else if let data = data {
-				if let httpURLResponse = response as? HTTPURLResponse, let links = httpURLResponse.value(forHTTPHeaderField: "link") {
+				if let httpURLResponse = response as? HTTPURLResponse,
+					let links = httpURLResponse.allHeaderFields["Link"] as? String {
 					let nextPagePath = self.nextPagePath(headerLinks: links)
 					completionHandler(.success((data, nextPagePath)))
 				} else {
