@@ -16,6 +16,7 @@
 		94A5E8E4239E92C800C1050B /* GithubSearchAPIPracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5E8E3239E92C800C1050B /* GithubSearchAPIPracticeTests.swift */; };
 		94A5E8EF239E939800C1050B /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5E8EE239E939800C1050B /* APIClient.swift */; };
 		94A5E8F4239E990600C1050B /* XCTestCase+expectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5E8F3239E990600C1050B /* XCTestCase+expectation.swift */; };
+		94A5E8FA239E9D4000C1050B /* api_search_users.json in Resources */ = {isa = PBXBuildFile; fileRef = 94A5E8F9239E9D4000C1050B /* api_search_users.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		94A5E8E5239E92C800C1050B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94A5E8EE239E939800C1050B /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		94A5E8F3239E990600C1050B /* XCTestCase+expectation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+expectation.swift"; sourceTree = "<group>"; };
+		94A5E8F9239E9D4000C1050B /* api_search_users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = api_search_users.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,14 @@
 				94A5E8EE239E939800C1050B /* APIClient.swift */,
 			);
 			path = WebAPI;
+			sourceTree = "<group>";
+		};
+		94A5E8F8239E9D2F00C1050B /* Mock JSONs */ = {
+			isa = PBXGroup;
+			children = (
+				94A5E8F9239E9D4000C1050B /* api_search_users.json */,
+			);
+			path = "Mock JSONs";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +214,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94A5E8FA239E9D4000C1050B /* api_search_users.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
