@@ -126,7 +126,6 @@
 				94A5E8CC239E92C600C1050B /* AppDelegate.swift */,
 				94A5E8D5239E92C700C1050B /* Assets.xcassets */,
 				94107826239EBE350022038E /* Cells */,
-				9410781F239EB0B60022038E /* DataManager.swift */,
 				946ED754239ED790006E8875 /* Extensions */,
 				94107821239EBA970022038E /* Flow */,
 				94A5E8DA239E92C800C1050B /* Info.plist */,
@@ -160,6 +159,7 @@
 		94A5E8F7239E9A8A00C1050B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9410781F239EB0B60022038E /* DataManager.swift */,
 				94A5E8FB239EA23B00C1050B /* APIResponseObject.swift */,
 				94A5E8F5239E9A8500C1050B /* UserModel.swift */,
 			);
